@@ -1,0 +1,10 @@
+#principalContainer{
+    padding: 2.5%;
+}
+#filterContainer {
+    padding: 1.0%;
+    border: 4px solid #000000;
+    border-radius: 29px;
+    background-color: #96969B ;
+    color: #000431;
+}
