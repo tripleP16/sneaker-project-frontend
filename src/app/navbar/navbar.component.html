@@ -1,26 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Sneaker Finder</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse " id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#"  data-bs-toggle="modal" data-bs-target="#userModal">Iniciar Sesion <i class="bi bi-door-open"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#adminModal">Admin <i class="bi bi-person-circle"></i></a>
-          </li>
-          <form class="d-flex ">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-          </form>
-        </ul>
-       
-      </div>
-      
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Sneaker Finder</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#userModal">Inicia Sesion  <i class="bi bi-box-arrow-in-right"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#adminModal">Admins <i class="bi bi-person-circle"></i></a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+      </form>
     </div>
+  </div>
 </nav>
 <app-login-users></app-login-users>
 <app-login-admins></app-login-admins>
