@@ -15,6 +15,7 @@ import { SneakerComponent } from './sneaker/sneaker.component';
 import { SneakerFiltersComponent } from './sneaker-filters/sneaker-filters.component';
 import { SneakerItemComponent } from './sneaker-item/sneaker-item.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

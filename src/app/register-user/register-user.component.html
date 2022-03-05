@@ -1,39 +1,45 @@
 <div class="container d-flex justify-content-center">
     <div class="basic-form">
         <h2 class="form-title">Registro de Usuarios</h2>
-        <form class="row">
+        <form class="row" (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="mb-3 col-6">
                 <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" id="name" ngModel name="name" required #name ="ngModel" minlength="4">
+                <span class="error" *ngIf="!name.valid && name.touched" >Por favor introduzca su nombre, debe tener al menos 4 caracteres</span>
                 <hr>
             </div>
             <div class="mb-3 col-6">
                 <label for="lastname" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="lastname">
+                <input type="text" class="form-control" id="lastname" ngModel name="lastname" #lastname = "ngModel" required minlength="4">
+                <span class="error" *ngIf="!lastname.valid && lastname.touched" >Por favor introduzca su apellido, debe tener al menos 4 caracteres</span>
                 <hr>
             </div>
             <div class="mb-3 col-8">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" id="email" ngModel name="email" #email ="ngModel" required email>
+                <span class="error" *ngIf="!email.valid && email.touched" >Por favor introduzca un email valido</span>
                 <hr>
             </div>
             <div class="mb-3 col-4">
-                <label for="fecha-nac" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="fecha-nac">
+                <label for="birthday" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="birthday" ngModel name="birthday" #birthday = "ngModel" required >
+                <span class="error"  *ngIf="!birthday.valid && birthday.touched">Por favor introduzca su fecha de nacimiento</span>
                 <hr>
             </div>
             <div class="mb-3 col-6">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" ngModel name="password" #password = "ngModel" required minlength="8">
+                <span class="error" *ngIf="!password.valid && password.touched" >Por favor introduzca una contraseña, debe tener al menos 8 caracteres</span>
                 <hr>
             </div>
             <div class="mb-3 col-6">
                 <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
-                <input type="password" class="form-control" id="confirm-password">
+                <input type="password" class="form-control" id="confirm-password" ngModel name="confirmPassword" #confirmPassword ="ngModel" required minlength="8" >
+                <span class="error" *ngIf="(!confirmPassword.valid && confirmPassword.touched) || (confirmPassword.value != password.value && confirmPassword.touched)" >Las contraseñas no coinciden</span>
                 <hr>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-success">Registrar Usuario</button>
+                <button type="submit" class="btn btn-success" [disabled]="!f.valid">Registrar Usuario</button>
             </div>
             
         </form>
