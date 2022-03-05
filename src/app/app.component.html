@@ -1,3 +1,4 @@
 <app-navbar></app-navbar>
-<app-footer></app-footer>
-<app-sneaker-content></app-sneaker-content>
+<div [@routeAnimations]="getRouteAnimationData()">
+    <router-outlet></router-outlet>
+</div>

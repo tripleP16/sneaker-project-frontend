@@ -13,6 +13,8 @@ import { SneakerContentComponent } from './sneaker-content/sneaker-content.compo
 import { SneakerShowcaseComponent } from './sneaker-showcase/sneaker-showcase.component';
 import { SneakerComponent } from './sneaker/sneaker.component';
 import { SneakerFiltersComponent } from './sneaker-filters/sneaker-filters.component';
+import { SneakerItemComponent } from './sneaker-item/sneaker-item.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SneakerFiltersComponent } from './sneaker-filters/sneaker-filters.compo
     SneakerContentComponent,
     SneakerShowcaseComponent,
     SneakerComponent,
-    SneakerFiltersComponent
+    SneakerFiltersComponent,
+    SneakerItemComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
