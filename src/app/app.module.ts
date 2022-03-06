@@ -17,6 +17,7 @@ import { ApiService } from './variables/server';
 import { ErrorAlertComponent } from './error-alert/error-alert.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModelPipe } from './pipes/model.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SneakerItemComponent,
     RegisterUserComponent,
     ErrorAlertComponent,
-    SuccessAlertComponent
+    SuccessAlertComponent,
+    ModelPipe,
   ],
   imports: [
     BrowserModule,

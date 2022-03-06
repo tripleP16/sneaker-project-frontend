@@ -20,6 +20,7 @@ export class SneakerShowcaseComponent implements OnInit {
   storeFilter = '0';
   isLoading = false;
   shoesBeforeFilter: Shoe[] = [];
+  model ='';
   
   constructor(
     private readonly shoesService: ShoesService,
@@ -86,5 +87,7 @@ export class SneakerShowcaseComponent implements OnInit {
     this.storesService.getStores().subscribe((response) => this.stores = response);
   }
 
+  modelFilter(s: string) {
 
+  }
 }

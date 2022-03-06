@@ -38,7 +38,7 @@
                 <label >Filtrar por modelo</label>
                 <hr>
                 <div class="mb-3 d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Modelo" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Modelo" name="model" aria-label="Search" [(ngModel)]="model">
                     <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
                 </div>
             </form>
@@ -47,7 +47,7 @@
     <div class="col-md-8 col-lg-9 col-sm-12">
         <div class="container px-4">
             <div class="row" id="sneakerShowcase"  *ngIf="!isLoading">
-                <div class="col-lg-4 col-sm-12 sneaker" *ngFor="let shoe of shoes | paginate: { itemsPerPage: 5, currentPage: p }">
+                <div class="col-lg-4 col-sm-12 sneaker" *ngFor="let shoe of shoes | paginate: { itemsPerPage: 5, currentPage: p } | modelFilter: model">
                     <app-sneaker-item [shoe]="shoe"></app-sneaker-item>
                 </div>
                 <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
