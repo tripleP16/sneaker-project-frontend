@@ -1,6 +1,8 @@
 <div class="container d-flex justify-content-center">
     <div class="basic-form">
         <h2 class="form-title">Registro de Usuarios</h2>
+        <app-error-alert *ngIf="isError" [message]="errorContent"></app-error-alert>
+        <app-success-alert *ngIf="succeed" [message]="successMessage"></app-success-alert>
         <form class="row" (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="mb-3 col-6">
                 <label for="name" class="form-label">Nombre</label>
@@ -38,8 +40,11 @@
                 <span class="error" *ngIf="(!confirmPassword.valid && confirmPassword.touched) || (confirmPassword.value != password.value && confirmPassword.touched)" >Las contraseñas no coinciden</span>
                 <hr>
             </div>
+            
             <div class="row">
-                <button type="submit" class="btn btn-success" [disabled]="!f.valid">Registrar Usuario</button>
+                <div class="spinner-border text-success" role="status" *ngIf="isLoading" >
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!f.valid" *ngIf="!isLoading">Registrar Usuario</button>
             </div>
             
         </form>

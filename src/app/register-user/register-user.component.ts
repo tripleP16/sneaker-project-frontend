@@ -9,22 +9,27 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
-  today = new Date();
-  date = new Date(this.today.setFullYear(this.today.getFullYear() - 14))
-  minDate =  this.date.toLocaleString().split(/\D/).slice(0,3).map(num=>num.padStart(2,"0")).join("/");
-  // constructor(private readonly userService: UserService) { }
+  isLoading = false;
+  isError = false;
+  errorContent = '';
+  succeed = false;
+  successMessage = '';
+  constructor(private readonly userService: UserService) { }
 
   ngOnInit(): void {
   }
-  // createUser(user: UserToRegister) {
-  //   this.userService.createUser(user).subscribe((result) =>{
-  //     console.log(result);
-  //   })
-    
-  // }
-
-  onSubmit(f: NgForm) {
-    console.log(f);
+  async onSubmit(f: NgForm) {
+    this.isLoading = true;
+    this.userService.createUser(f.value).subscribe((response)=> {
+      this.isLoading = false;
+      this.succeed = true;
+      this.successMessage = 'El usuario se ha registrado correctamente';
+      f.reset();
+    }, error => {
+      this.isLoading = false;
+      this.errorContent = error.error.message;
+      this.isError = true;
+    })
   }
 
 

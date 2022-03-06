@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SneakerItemComponent } from './sneaker-item.component';
+import { SuccessAlertComponent } from './success-alert.component';
 
-describe('SneakerItemComponent', () => {
-  let component: SneakerItemComponent;
-  let fixture: ComponentFixture<SneakerItemComponent>;
+describe('SuccessAlertComponent', () => {
+  let component: SuccessAlertComponent;
+  let fixture: ComponentFixture<SuccessAlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SneakerItemComponent ]
+      declarations: [ SuccessAlertComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SneakerItemComponent);
+    fixture = TestBed.createComponent(SuccessAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

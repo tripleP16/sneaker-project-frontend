@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Shoe } from '../models/shoe.model';
+import { ShoesService } from '../services/shoes.service';
 
 @Component({
   selector: 'app-sneaker-showcase',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sneaker-showcase.component.css']
 })
 export class SneakerShowcaseComponent implements OnInit {
-
-  constructor() { }
+  p: number = 1;
+  shoes: Shoe[] = []
+  constructor(private readonly shoesService: ShoesService) { }
 
   ngOnInit(): void {
+    this.getShoes();
+  }
+
+  getShoes() {
+    this.shoesService.getShoes().subscribe((response) => this.shoes = response);
   }
 
 }

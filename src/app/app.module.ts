@@ -16,6 +16,11 @@ import { SneakerFiltersComponent } from './sneaker-filters/sneaker-filters.compo
 import { SneakerItemComponent } from './sneaker-item/sneaker-item.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './variables/server';
+import { ErrorAlertComponent } from './error-alert/error-alert.component';
+import { SuccessAlertComponent } from './success-alert/success-alert.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,9 @@ import { FormsModule } from '@angular/forms';
     SneakerComponent,
     SneakerFiltersComponent,
     SneakerItemComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    ErrorAlertComponent,
+    SuccessAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +45,10 @@ import { FormsModule } from '@angular/forms';
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     FormsModule,
+    HttpClientModule,
+    NgxPaginationModule, 
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

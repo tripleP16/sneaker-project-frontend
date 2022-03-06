@@ -10,6 +10,6 @@ export class UserService {
   constructor(private httpClient: HttpClient, private apiServer: ApiService) { }
 
   public createUser(user: UserToRegister) {
-    return this.httpClient.post<UserToRegister>(`${this.apiServer.API_SERVER}/users`, user);
+    return this.httpClient.post(`${this.apiServer.API_SERVER}/users`, user)
   }
 }
