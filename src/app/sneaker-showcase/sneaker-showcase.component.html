@@ -26,13 +26,13 @@
                     <label for="releaseDate">Filtrar por fecha de lanzamiento</label>
                     <p class="help">Se buscaran los zapatos con fecha de lanzamiento superior o igual a esta </p>
                     <hr>
-                    <input type="date" id="releaseDate">
+                    <input type="date" id="releaseDate" name="date" [(ngModel)] ="date" >
                 </div>
                 <label>Filtrar por Precio</label>
                 <hr>
                 <p class="help">Se buscaran los zapatos con precio igual superior a este</p>
                 <div class="mb-3 d-flex">
-                    <input class="form-control me-2" type="number" placeholder="124.5" aria-label="Search">
+                    <input class="form-control me-2" type="number" placeholder="124.5" name="price" aria-label="Search" [(ngModel)]="price">
                     <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
                 </div>
                 <label >Filtrar por modelo</label>
@@ -47,7 +47,7 @@
     <div class="col-md-8 col-lg-9 col-sm-12">
         <div class="container px-4">
             <div class="row" id="sneakerShowcase"  *ngIf="!isLoading">
-                <div class="col-lg-4 col-sm-12 sneaker" *ngFor="let shoe of shoes | paginate: { itemsPerPage: 5, currentPage: p } | modelFilter: model">
+                <div class="col-lg-4 col-sm-12 sneaker" *ngFor="let shoe of shoes | paginate: { itemsPerPage: 5, currentPage: p } | modelFilter: model | priceFilter: price | dateFilter: date">
                     <app-sneaker-item [shoe]="shoe"></app-sneaker-item>
                 </div>
                 <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>

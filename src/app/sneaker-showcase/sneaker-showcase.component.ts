@@ -21,7 +21,8 @@ export class SneakerShowcaseComponent implements OnInit {
   isLoading = false;
   shoesBeforeFilter: Shoe[] = [];
   model ='';
-  
+  price = '';
+  date = '';
   constructor(
     private readonly shoesService: ShoesService,
     private readonly brandsService: BrandService,

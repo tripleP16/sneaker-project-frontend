@@ -18,6 +18,8 @@ import { ErrorAlertComponent } from './error-alert/error-alert.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModelPipe } from './pipes/model.pipe';
+import { PricePipe } from './pipes/price.pipe';
+import { ReleaseDatePipe } from './pipes/release.date.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ModelPipe } from './pipes/model.pipe';
     ErrorAlertComponent,
     SuccessAlertComponent,
     ModelPipe,
+    PricePipe,
+    ReleaseDatePipe,
   ],
   imports: [
     BrowserModule,
