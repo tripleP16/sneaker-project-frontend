@@ -10,15 +10,25 @@ import { ApiService } from "../variables/server";
 export class ShoesService {
     constructor(private httpClient: HttpClient, private apiServer: ApiService) {}
 
-    public getShoes() {
-        return this.httpClient.get(`${this.apiServer.API_SERVER}/shoes`).pipe(
+    public getShoes(storeId?: string, brandId?: string) {
+        let url = `${this.apiServer.API_SERVER}/shoes`;
+        if(!storeId && brandId) {
+            url = `${this.apiServer.API_SERVER}/shoes?brandId=${brandId}`;
+        }
+        if(storeId && !brandId) {
+            url = `${this.apiServer.API_SERVER}/shoes?storeId=${storeId}`;
+        }
+        if(storeId && brandId) {
+            url = `${this.apiServer.API_SERVER}/shoes?storeId=${storeId}&&brandId=${brandId}`;
+        }
+        return this.httpClient.get(url).pipe(
             map((responseData: any )=> {
-                console.log(responseData.body)
                 const shoesArray: Shoe[] = [];
                 for (let shoe in responseData.body) {
                    shoesArray.push(responseData.body[shoe]);
                     
                 }
+                console.log(shoesArray);
                 return shoesArray;
             })
         )

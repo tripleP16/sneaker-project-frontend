@@ -1,4 +1,16 @@
-
-.sneaker {
+#principalContainer{
+    padding: 5%;
+}
+#filterContainer {
+    padding: 1.0%;
+    color: #000431;
+}
+#filters{
+    padding: 5%;
+}
+.help {
+    font-size: x-small;
+}
+.sneaker{
     margin-bottom: 5%;
 }

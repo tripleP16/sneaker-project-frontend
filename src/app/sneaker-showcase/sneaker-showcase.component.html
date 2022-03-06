@@ -1,10 +1,62 @@
-<div class="container px-4">
-    <div class="row" id="sneakerShowcase" >
-        <div class="col-lg-4 col-sm-12 sneaker" *ngFor="let shoe of shoes | paginate: { itemsPerPage: 5, currentPage: p }">
-            <app-sneaker-item [shoe]="shoe"></app-sneaker-item>
+<div class="row" id="principalContainer">
+    <div class="col-md-4 col-lg-3 col-sm-12" id="filterContainer">
+        <div class="container">
+            <h3>Filtros</h3>
+            <hr>
+            <form id="filters">
+                <div class="mb-3">
+                    <label>Filtrar por marca</label>
+                    <hr>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"  name="brand" ngModel #brand="ngModel" (change)="getBrandFilter(brand.value)">
+                        <option value="0">Seleccione una </option>
+                        <option *ngFor="let brand of brands" [value]="brand._id">{{brand.name}}</option>
+                    </select>
+                </div>
+               
+                <div class="mb-3">
+                    <label>Filtrar por tienda</label>
+                    <hr>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"  name="store" ngModel #store="ngModel" (change)="getStoreFilter(store.value)">
+                        <option value="0">Seleccione una </option>
+                        <option *ngFor="let store of stores" [value]="store._id">{{store.name}}</option>
+                       
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="releaseDate">Filtrar por fecha de lanzamiento</label>
+                    <p class="help">Se buscaran los zapatos con fecha de lanzamiento superior o igual a esta </p>
+                    <hr>
+                    <input type="date" id="releaseDate">
+                </div>
+                <label>Filtrar por Precio</label>
+                <hr>
+                <p class="help">Se buscaran los zapatos con precio igual superior a este</p>
+                <div class="mb-3 d-flex">
+                    <input class="form-control me-2" type="number" placeholder="124.5" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                </div>
+                <label >Filtrar por modelo</label>
+                <hr>
+                <div class="mb-3 d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Modelo" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-9 col-sm-12">
+        <div class="container px-4">
+            <div class="row" id="sneakerShowcase"  *ngIf="!isLoading">
+                <div class="col-lg-4 col-sm-12 sneaker" *ngFor="let shoe of shoes | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <app-sneaker-item [shoe]="shoe"></app-sneaker-item>
+                </div>
+                <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+            </div>
+            <div class="row" *ngIf="isLoading">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
-<pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
