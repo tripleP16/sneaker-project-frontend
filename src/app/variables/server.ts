@@ -1,3 +1,3 @@
 export class ApiService {
-    API_SERVER = "http://localhost:3000";
+    API_SERVER = "https://sneaker-project.herokuapp.com";
 }
