@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center">
+    <div class="basic-form">
+        <h2 class="form-title">Añadir sneakers a tiendas</h2>
+        <app-error-alert *ngIf="isError" [message]="errorContent"></app-error-alert>
+        <app-success-alert *ngIf="succeed" [message]="successMessage"></app-success-alert>
+        <form (submit)="onSubmit(f)"  #f="ngForm">
+            <div class="mb-3 col-12">
+                <label>Selecciona una tienda</label>
+                <hr>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example"  name="store" ngModel #store="ngModel" required>
+                    <option value="0" disabled>Seleccione una </option>
+                    <option *ngFor="let store of stores" [value]="store._id">{{store.name}}</option>
+                   
+                </select>
+            </div>
+            <div class="mb-3 col-12">
+                <label>Seleccione un sneaker</label>
+                <hr>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example"  name="sneaker" ngModel #sneaker="ngModel" required>
+                    <option value="0" disabled>Seleccione una </option>
+                    <option *ngFor="let shoe of shoes" [value]="shoe._id">{{shoe.model}}</option>
+                   
+                </select>
+            </div>
+            <div class="row">
+                <div class="spinner-border text-success" role="status" *ngIf="isLoading" >
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!f.valid" *ngIf="!isLoading">Registrar Usuario</button>
+            </div>
+        </form>
+    </div>
+</div>

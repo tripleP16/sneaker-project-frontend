@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterBrandComponent } from './register-brand/register-brand.component';
 import { RegisterShoeComponent } from './register-shoe/register-shoe.component';
+import { RegisterStoreComponent } from './register-store/register-store.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { SneakerShowcaseComponent } from './sneaker-showcase/sneaker-showcase.component';
+import { SneakerToStoreComponent } from './sneaker-to-store/sneaker-to-store.component';
 import { SneakerComponent } from './sneaker/sneaker.component';
 
 const routes: Routes = [
@@ -11,7 +13,9 @@ const routes: Routes = [
   {path:'', component: SneakerShowcaseComponent, data: { animation: 'defaultPage' }},
   {path:'sneaker', component: SneakerComponent,},
   {path: 'create-shoe', component: RegisterShoeComponent},
-  {path: 'create-brand', component: RegisterBrandComponent}
+  {path: 'create-brand', component: RegisterBrandComponent},
+  {path: 'create-store', component: RegisterStoreComponent},
+  {path: 'add-shoe-store', component: SneakerToStoreComponent}
 ];
 
 @NgModule({

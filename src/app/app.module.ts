@@ -31,6 +31,8 @@ import { environment } from 'src/environments/environment';
 import { ApiService2 } from './services/api.service';
 import { AuthInterceptor } from './interceptors/http.interceptor';
 import { RegisterBrandComponent } from './register-brand/register-brand.component';
+import { RegisterStoreComponent } from './register-store/register-store.component';
+import { SneakerToStoreComponent } from './sneaker-to-store/sneaker-to-store.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { RegisterBrandComponent } from './register-brand/register-brand.componen
     ReleaseDatePipe,
     RegisterShoeComponent,
     RegisterBrandComponent,
+    RegisterStoreComponent,
+    SneakerToStoreComponent,
   ],
   imports: [
     BrowserModule,
