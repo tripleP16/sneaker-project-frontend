@@ -12,7 +12,7 @@ import { SneakerShowcaseComponent } from './sneaker-showcase/sneaker-showcase.co
 import { SneakerItemComponent } from './sneaker-item/sneaker-item.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService } from './variables/server';
 import { ErrorAlertComponent } from './error-alert/error-alert.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
@@ -29,6 +29,7 @@ import {
 } from "@angular/fire/compat/storage";
 import { environment } from 'src/environments/environment';
 import { ApiService2 } from './services/api.service';
+import { AuthInterceptor } from './interceptors/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { ApiService2 } from './services/api.service';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
-  providers: [ApiService,],
+  providers: [ApiService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

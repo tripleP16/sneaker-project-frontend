@@ -3,18 +3,44 @@
         <h2 class="form-title">Registro de Sneakers</h2>
         <app-error-alert *ngIf="isError" [message]="errorContent"></app-error-alert>
         <app-success-alert *ngIf="succeed" [message]="successMessage"></app-success-alert>
-        <div class="mb-3 col-6">
-            <label for="name" class="form-label">Modelo</label>
-            <input type="text" class="form-control" id="model" ngModel name="model" required #model ="ngModel" minlength="4">
-            <span class="error" *ngIf="!name.valid && name.touched" >Por favor introduzca su nombre, debe tener al menos 4 caracteres</span>
-            <hr>
-        </div>
-        <input type="file"
- id="file"
- #userPhoto
- (change)="onFileSelected($event)"
- name="image"
- autocomplete="off"
- />
+        <form (submit)="onSubmit(f)"  #f="ngForm">
+            <div class="mb-3 col-12">
+                <label for="name" class="form-label">Modelo</label>
+                <input type="text" class="form-control" id="model" ngModel name="model" required #model ="ngModel" minlength="4">
+                <span class="error" *ngIf="!model.valid && model.touched" >Por favor introduzca el modelo, debe tener al menos 4 caracteres</span>
+                <hr>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="price" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="price" ngModel name="price" required #price ="ngModel" min="0">
+                <span class="error" *ngIf="!price.valid && price.touched" >Por favor introduzca el precio</span>
+                <hr>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="image" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="image" ngModel name="image" required #image ="ngModel"  (change)="onFileSelected($event)">
+                <span class="error" *ngIf="!image.valid && image.touched" >Por favor suba la imagen</span>
+                <hr>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="releaseDate">Fecha de lanzamiento</label>
+                <hr>
+                <input type="date" id="releaseDate" class="form-control" name="releaseDate"  ngModel required #releaseDate ="ngModel" >
+                <span class="error" *ngIf="!releaseDate.valid && releaseDate.touched" >Por favor introduzca la fecha de lanzamiento</span>
+            </div>
+            <div class="mb-3 col-12">
+                <label>Marca</label>
+                <hr>
+                <select class="form-select form-select-sm"  name="brand" ngModel #brand="ngModel" required>
+                    <option value="0" selected disabled>Seleccione una </option>
+                    <option *ngFor="let brand of brands" [value]="brand._id">{{brand.name}}</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="spinner-border text-success" role="status" *ngIf="isLoading" >
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!f.valid" *ngIf="!isLoading">Registrar Usuario</button>
+            </div>
+        </form>
     </div>
 </div>

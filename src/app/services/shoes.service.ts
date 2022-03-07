@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
+import { ShoeToCreate } from "../models/shoe.create.model";
 import { Shoe } from "../models/shoe.model";
 import { ApiService } from "../variables/server";
 
@@ -32,5 +33,9 @@ export class ShoesService {
                 return shoesArray;
             })
         )
+    }
+
+    public createShoe(shoe: ShoeToCreate, id: string) {
+        return this.httpClient.post(`${this.apiServer.API_SERVER}/shoes/brand/${id}`, shoe)
     }
 }
