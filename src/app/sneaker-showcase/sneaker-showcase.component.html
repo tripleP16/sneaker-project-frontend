@@ -47,6 +47,8 @@
     <div class="col-md-8 col-lg-9 col-sm-12">
         <div class="container px-4">
             <div class="row" id="sneakerShowcase"  *ngIf="!isLoading">
+                <h4>Todos los Sneakers que puedes encontrar</h4>
+                <hr>
                 <div class="col-lg-4 col-sm-12 sneaker" *ngFor="let shoe of shoes | paginate: { itemsPerPage: 5, currentPage: p } | modelFilter: model | priceFilter: price | dateFilter: date">
                     <app-sneaker-item [shoe]="shoe"></app-sneaker-item>
                 </div>

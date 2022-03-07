@@ -1,0 +1,20 @@
+<div class="container d-flex justify-content-center">
+    <div class="basic-form">
+        <h2 class="form-title">Registro de Sneakers</h2>
+        <app-error-alert *ngIf="isError" [message]="errorContent"></app-error-alert>
+        <app-success-alert *ngIf="succeed" [message]="successMessage"></app-success-alert>
+        <div class="mb-3 col-6">
+            <label for="name" class="form-label">Modelo</label>
+            <input type="text" class="form-control" id="model" ngModel name="model" required #model ="ngModel" minlength="4">
+            <span class="error" *ngIf="!name.valid && name.touched" >Por favor introduzca su nombre, debe tener al menos 4 caracteres</span>
+            <hr>
+        </div>
+        <input type="file"
+ id="file"
+ #userPhoto
+ (change)="onFileSelected($event)"
+ name="image"
+ autocomplete="off"
+ />
+    </div>
+</div>

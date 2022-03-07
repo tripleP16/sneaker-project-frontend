@@ -6,16 +6,22 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
+          <app-error-alert *ngIf="isError" [message]="errorContent"></app-error-alert>
+          <app-success-alert *ngIf="succeed" [message]="successMessage"></app-success-alert>
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="perez51160900@gmail.com">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="perez51160900@gmail.com" ngModel name="email" #email ="ngModel" required email>
+                  <span class="error" *ngIf="!email.valid && email.touched" >Por favor introduzca un email valido</span>
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" class="form-control" id="exampleInputPassword1" ngModel name="password" #password = "ngModel" required minlength="8">
+                  <span class="error" *ngIf="!password.valid && password.touched" >Por favor introduzca una contraseña, debe tener al menos 8 caracteres</span>
                 </div>
-                <button type="submit" class="btn btn-success">Inicia Sesion</button>
+                <div class="spinner-border text-success" role="status" *ngIf="isLoading" >
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!f.valid" *ngIf="!isLoading">Inicia Sesion</button>
             </form>
            <hr>
         </div>

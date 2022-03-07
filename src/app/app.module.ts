@@ -20,6 +20,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ModelPipe } from './pipes/model.pipe';
 import { PricePipe } from './pipes/price.pipe';
 import { ReleaseDatePipe } from './pipes/release.date.pipe';
+import { RegisterShoeComponent } from './register-shoe/register-shoe.component';
+import { AngularFireModule } from "@angular/fire/compat";
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from "@angular/fire/compat/storage";
+import { environment } from 'src/environments/environment';
+import { ApiService2 } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +44,7 @@ import { ReleaseDatePipe } from './pipes/release.date.pipe';
     ModelPipe,
     PricePipe,
     ReleaseDatePipe,
+    RegisterShoeComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +55,10 @@ import { ReleaseDatePipe } from './pipes/release.date.pipe';
     FormsModule,
     HttpClientModule,
     NgxPaginationModule, 
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
-  providers: [ApiService],
+  providers: [ApiService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
