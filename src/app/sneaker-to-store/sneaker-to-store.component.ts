@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Shoe } from '../models/shoe.model';
 import { Store } from '../models/store.model';
 import { ShoesService } from '../services/shoes.service';
+import { TokenStorageService } from '../services/storage.service';
 import { StoreService } from '../services/store.service';
 
 @Component({
@@ -22,9 +24,12 @@ export class SneakerToStoreComponent implements OnInit {
   constructor(
     private readonly shoesService: ShoesService,
     private readonly storeService: StoreService,
+    private storage: TokenStorageService,  
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.checkLogin();
     this.getStores();
     this.getShoes();
   }
@@ -56,5 +61,13 @@ export class SneakerToStoreComponent implements OnInit {
     this.storeService.getStores().subscribe((response) => this.stores = response);
   }
 
-
+  checkLogin() {
+    console.log(this.storage.getToken());
+    if(this.storage.getToken() != '' && this.storage.getToken() != undefined && this.storage.getToken() != null ) {
+      this.isLogged = true;
+    }else {
+      this.isLogged = false;
+      this.router.navigate(['/'])
+    }
+  }
 }

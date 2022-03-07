@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TokenStorageService } from '../services/storage.service';
 import { StoreService } from '../services/store.service';
 
 @Component({
@@ -14,9 +16,14 @@ export class RegisterStoreComponent implements OnInit {
   errorContent = '';
   succeed = false;
   successMessage = '';
-  constructor(private readonly storeService: StoreService) { }
+  constructor(
+    private readonly storeService: StoreService,
+    private storage: TokenStorageService,  
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
+    this.checkLogin();
   }
 
   onSubmit(f: NgForm) {
@@ -33,6 +40,16 @@ export class RegisterStoreComponent implements OnInit {
       this.errorContent = error.error.message;
       this.isError = true;
     })
+  }
+
+  checkLogin() {
+    console.log(this.storage.getToken());
+    if(this.storage.getToken() != '' && this.storage.getToken() != undefined && this.storage.getToken() != null ) {
+      this.isLogged = true;
+    }else {
+      this.isLogged = false;
+      this.router.navigate(['/'])
+    }
   }
 
 }

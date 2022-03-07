@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BrandService } from '../services/brands.service';
+import { TokenStorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-register-brand',
@@ -14,9 +16,14 @@ export class RegisterBrandComponent implements OnInit {
   errorContent = '';
   succeed = false;
   successMessage = '';
-  constructor(private readonly brandService: BrandService) { }
+  constructor(
+    private readonly brandService: BrandService, 
+    private storage: TokenStorageService,  
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
+    this.checkLogin()
   }
 
   onSubmit(f:NgForm) {
@@ -33,5 +40,14 @@ export class RegisterBrandComponent implements OnInit {
       this.errorContent = error.error.message;
       this.isError = true;
     })
+  }
+  checkLogin() {
+    console.log(this.storage.getToken());
+    if(this.storage.getToken() != '' && this.storage.getToken() != undefined && this.storage.getToken() != null ) {
+      this.isLogged = true;
+    }else {
+      this.isLogged = false;
+      this.router.navigate(['/'])
+    }
   }
 }
