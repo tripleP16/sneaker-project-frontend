@@ -1,0 +1,31 @@
+<div class="container d-flex justify-content-center">
+    <div class="basic-form">
+        <h2 class="form-title">Registro de Marcas</h2>
+        <app-error-alert *ngIf="isError" [message]="errorContent"></app-error-alert>
+        <app-success-alert *ngIf="succeed" [message]="successMessage"></app-success-alert>
+        <form (submit)="onSubmit(f)"  #f="ngForm">
+            <div class="mb-3 col-12">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" ngModel name="name" required #name ="ngModel" minlength="2">
+                <span class="error" *ngIf="!name.valid && name.touched" >Por favor introduzca el nombre de la marca, debe tener al menos 2 caracteres</span>
+                <hr>
+            </div>
+            <div class="mb-3 col-12">
+                <label>Categoria</label>
+                <hr>
+                <select class="form-select form-select-sm"  name="category" ngModel #category="ngModel" required>
+                    <option value="0" selected disabled>Seleccione una </option>
+                    <option value="CLASICO">Clasico</option>
+                    <option value="FORMAL">Formal</option>
+                    <option value="DEPORTIVO">Deportivo</option>
+                    <option value="ALL">General</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="spinner-border text-success" role="status" *ngIf="isLoading" >
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!f.valid" *ngIf="!isLoading">Registrar Usuario</button>
+            </div>
+        </form>
+    </div>
+</div>

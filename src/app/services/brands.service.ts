@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
+import { BrandToCreate } from "../models/brand.create.model";
 import { Brand } from "../models/brand.model";
 import { ApiService } from "../variables/server";
 
@@ -20,5 +21,9 @@ export class BrandService {
                 return brandsArray;
             })
         )
+    }
+
+    public createBrand(brand: BrandToCreate) {
+        return this.httpClient.post(`${this.apiServer.API_SERVER}/brands`, brand)
     }
 }
